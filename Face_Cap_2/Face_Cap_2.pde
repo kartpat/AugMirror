@@ -15,6 +15,7 @@ int timeCount = 0;
 int skale = 2;
 boolean newFaces = true;
 int f1,f2;
+int prevFaceCount = 0;
 //int lenFace = 0;
 
 
@@ -40,9 +41,20 @@ void draw() {
   // if(millis() - timeCount > 40){       
   //          // lenFace = faces.length;
   //           timeCount = millis();
+   if (faces.length != prevFaceCount){
+        newFaces = true;
+   }
             
-            
-      
+  if (newFaces && faces.length > 1){
+          f1 = int(random(0,faces.length));
+          f2 = f1;
+          
+          while(f1 == f2){
+          f2 = int(random(0,faces.length));
+          }
+          println(f1+" and "+f2);
+          // println(f2);
+        }    
    
  
    
@@ -61,18 +73,7 @@ void draw() {
           // noFill();
           rect(faces[i].x, faces[i].y, faces[i].width, faces[i].height);
           // if (!faceSent){
-        // if (newFaces){
-        //   f1 = int(random(0,faces.length));
-        //   f2 = f1;
-          
-        //   while(f1 == f2){
-        //   f2 = int(random(0,faces.length));
-        //   }
-        //   println(f1);
-        //   println(f2);
-        // }
-            
-            
+             
           if(faces.length>1){  
                 faze [i] = createImage(skale*faces[i].width, skale*ceil(faces[i].height*1.3),RGB);
                 
@@ -88,10 +89,10 @@ void draw() {
       
       for (int nume = 0 ; nume < faces.length ; nume++){
           float sepa = dist(faces[(nume+1)%faces.length].x, faces[(nume+1)%faces.length].y, faces[(nume)%faces.length].x, faces[(nume)%faces.length].y);
-          println("Separation: "+sepa);
+          // println("Separation: "+sepa);
           float mape = map(sepa, 50*skale ,125*skale, 220, 130);
           float rand = map( sepa,50*skale ,125*skale, 254, 50);
-          println("Rand: "+rand);
+          // println("Rand: "+rand);
           tint(random(255,rand),random(255,rand),mape, mape);
           image(faze[nume % faces.length] , faces[(nume+1)%faces.length].x, faces[(nume+1)%faces.length].y - ceil(0.25*faces[(nume+1)%faces.length].height), faces[(nume+1)%faces.length].width, ceil(faces[(nume+1)%faces.length].height*1.3));
       
@@ -101,7 +102,7 @@ void draw() {
       
       //noTint();
     }
-     
+ prevFaceCount = faces.length;    
 }
 
 
