@@ -61,7 +61,7 @@ void draw() {
   //println(faces.length);
   
   noFill();
-  stroke(10);
+  stroke(255,0,0);
   for (int i = 0; i < faces.length; i++) {
      
     //rect(faces[i].x, faces[i].y - int(0.25*faces[i].height), faces[i].width, int(faces[i].height*1.3));
@@ -71,7 +71,18 @@ void draw() {
            //rect(faces[i].x, faces[i].y, faces[i].width, faces[i].height);
           // stroke(0,255,0);
           // noFill();
-          rect(faces[i].x, faces[i].y, faces[i].width, faces[i].height);
+          // rect(faces[i].x, faces[i].y, faces[i].width, faces[i].height);
+          if (faces.length>1){
+               float distance = dist(faces[f1].x, faces[f1].y,faces[f2].x, faces[f2].y);
+               println("distance :"+distance);
+               if (distance < 150.0){
+                  stroke(0,0,255); 
+               }
+               rect(faces[f1].x, faces[f1].y, faces[f1].width, faces[f1].height);
+               rect(faces[f2].x, faces[f2].y, faces[f2].width, faces[f2].height);
+               line(faces[f1].x, faces[f1].y,faces[f2].x, faces[f2].y);
+                
+           }
           // if (!faceSent){
              
           if(faces.length>1){  
@@ -93,8 +104,8 @@ void draw() {
           float mape = map(sepa, 50*skale ,125*skale, 220, 130);
           float rand = map( sepa,50*skale ,125*skale, 254, 50);
           // println("Rand: "+rand);
-          tint(random(255,rand),random(255,rand),mape, mape);
-          image(faze[nume % faces.length] , faces[(nume+1)%faces.length].x, faces[(nume+1)%faces.length].y - ceil(0.25*faces[(nume+1)%faces.length].height), faces[(nume+1)%faces.length].width, ceil(faces[(nume+1)%faces.length].height*1.3));
+          // tint(random(255,rand),random(255,rand),mape, mape);
+          // image(faze[nume % faces.length] , faces[(nume+1)%faces.length].x, faces[(nume+1)%faces.length].y - ceil(0.25*faces[(nume+1)%faces.length].height), faces[(nume+1)%faces.length].width, ceil(faces[(nume+1)%faces.length].height*1.3));
       
       }
       
