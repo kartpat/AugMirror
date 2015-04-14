@@ -13,6 +13,8 @@ OpenCV opencv;
 
 int timeCount = 0;
 int skale = 2;
+boolean newFaces = true;
+int f1,f2;
 //int lenFace = 0;
 
 
@@ -57,8 +59,18 @@ void draw() {
            //rect(faces[i].x, faces[i].y, faces[i].width, faces[i].height);
           // stroke(0,255,0);
           // noFill();
-          // rect(faces[i].x, faces[i].y, faces[i].width, faces[i].height);
+          rect(faces[i].x, faces[i].y, faces[i].width, faces[i].height);
           // if (!faceSent){
+        // if (newFaces){
+        //   f1 = int(random(0,faces.length));
+        //   f2 = f1;
+          
+        //   while(f1 == f2){
+        //   f2 = int(random(0,faces.length));
+        //   }
+        //   println(f1);
+        //   println(f2);
+        // }
             
             
           if(faces.length>1){  
